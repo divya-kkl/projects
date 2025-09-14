@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!-- <!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Admin Dashboard</title>
@@ -111,7 +111,7 @@ fetch('/api/users')
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Admin Dashboard</title>
@@ -236,4 +236,97 @@ fetch('/api/users')
         loadUsers();
     </script>
 </body>
+</html> --> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #usersTable {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #usersTable thead {
+      background: #6C63FF;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    #usersTable th, #usersTable td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid #eaeaea;
+      font-size: 15px;
+    }
+
+    #usersTable tbody tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    #usersTable tbody tr:hover {
+      background: #f1f0ff;
+      transition: background 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h2>All Saved Users</h2>
+  <table border="1" id="usersTable">
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Password</th></tr>
+    </thead>
+    <tbody id="usersBody">
+      <tr><td colspan="3">Loading users...</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const usersBody = document.getElementById("usersBody");
+
+    async function loadUsers() {
+      try {
+        const res = await fetch("/api/users");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const users = await res.json();
+
+        usersBody.innerHTML = "";
+        if (users.length === 0) {
+          usersBody.innerHTML = "<tr><td colspan='3'>No users found</td></tr>";
+          return;
+        }
+
+        users.forEach(u => {
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${u.name}</td><td>${u.email}</td><td>${u.password}</td>`;
+          usersBody.appendChild(row);
+        });
+      } catch (err) {
+        console.error(err);
+        usersBody.innerHTML = "<tr><td colspan='3'>Error loading users</td></tr>";
+      }
+    }
+
+    loadUsers();
+  </script>
+</body>
 </html>
+
