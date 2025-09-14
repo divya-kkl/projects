@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+       
+        .dashboard-container {
+        display: none; /* Hide dashboard by default */
+      padding: 20px;
+      margin-top: 20px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      max-width: 200px;
+      margin-left: -100%;
+        }
+
+        .dashboard-container p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+          
+      img.click-image {
+      width: 50px;
+      cursor: pointer;
+      position: sticky;
+    }
+         .dashboard{
+          position: fixed;
+           margin-top:  -10%;
+            margin-left: 95%;
+         }
+   /* Top header: logo + signup */
+   .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+   
+  }
+
+  .logo img {
+    height: 50px;
+    margin-right: 12px;
+  }
+
+  .signup-btn {
+    padding: 10px 22px;
+    background: linear-gradient(90deg, #575758, #abacad);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  } 
+
+  /* Navigation section */
+   .nav-header {
+    display: flex;
+    justify-content: center;
+    background-color: #282727;
+    padding: 12px 0;
+    color: white;
+    border-radius: 10px 10px 5px 5px;
+  }
+
+  .nav-header a {
+    margin: 0 25px;
+    text-decoration: none;
+    color: #fcfafa;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s, font-weight 0.3s;
+  }
+
+  .nav-header a:hover {
+    color: #007BFF;
+    font-weight: 600;
+  } 
+
+  /* Mobile responsiveness */
+   @media(max-width: 768px) {
+    .top-header {
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-header {
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 15px;
+    }
+  } 
+
+   .banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f4f4f4;
+      height: 400px;
+      overflow: hidden;
+      padding: 40px;
+      margin-top: 10px;
+      border-radius: 0px  0px 10px 10px;
+    }
+    .banner-content {
+      max-width: 45%;
+      z-index: 5;
+      margin-left: 150px;
+     
+    }
+    .banner-content h1 {
+      /* font-size: 2.2rem; */
+      margin: 0 0 15px;
+       font-size: 40px;
+       
+    }
+    .banner-content p {
+      font-size: 20px;
+      line-height: 1.5;
+      margin-top: -2px;
+      margin-left: 90px;
+    }
+    .banner-images {
+      position: relative;
+      width: 50%;
+      height: 100%;
+     
+    }
+    .banner-images img {
+      position: absolute;
+      height: 220px;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+       margin-left: 250px;
+    }
+    .img-top {
+      top: 20px;
+      left: 80px;
+      z-index: 3;
+      transform: rotate(-2deg);
+    }
+    .img-middle {
+      top: 80px;
+      left: 140px;
+      z-index: 2;
+      transform: rotate(2deg);
+    }
+    .img-side {
+      top: 150px;
+      left: -40px;
+      z-index: 1;
+      transform: rotate(-8deg);
+    }
+    .banner-images img:hover {
+      transform: scale(1.05);
+      z-index: 5;
+    }
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 180px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      
+    }
+
+    .card {
+      position: relative;
+      width: 250px;
+      height: 300px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      cursor: pointer;
+      margin-top:80px;
+    }
+
+    .card img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.4s ease;
+    }
+
+    .card .img1 {
+      opacity: 1;
+    }
+
+    .card .img2 {
+      opacity: 0;
+    }
+
+    .card:hover .img1 {
+      opacity: 0;
+    }
+
+    .card:hover .img2 {
+      opacity: 1;
+    }
+
+
+    .banner2 {
+        display: flex;
+        align-items: center;
+        padding: 60px;
+        gap: 40px;
+        /* background:linear-gradient(#767575,#bbb9b9); */
+        height: 480px;
+        margin-top: 30px;
+    }
+    .banner-left {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+    .banner-left img {
+        max-width: 90%;
+        height: 500px;
+        border-radius: 8px;
+        margin-left: -10px;
+    }
+    .banner-right {
+        flex: 1;
+    }
+    .banner-right h2 {
+        color: #222;
+        font-size: 28px;
+        margin: 0 0 10px;
+        font-weight: 500;
+    }
+    .banner-right h1 {
+        color: #050505;
+        font-size: 42px;
+        margin: 0 0 20px;
+        margin-left: 30px;
+    }
+    .banner-right p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 30px;
+    }
+    .stats {
+        display: flex;
+        gap: 20px;
+    }
+    .stat-box {
+        background: #d61f87;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+        flex: 1;
+    }
+    .stat-box h3 {
+        font-size: 28px;
+        margin: 0;
+    }
+    .stat-box span {
+        display: block;
+        font-size: 14px;
+        color: #ffeb3b;
+        margin-top: 5px;
+    }
+    @media (max-width: 900px) {
+        .banner {
+            flex-direction: column;
+            text-align: center;
+        }
+        .stats {
+            flex-direction: column;
+        }
+    }
+
+     .shop-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background: #f5f5f5; */
+    margin-top: -90px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 90px;
+  }
+
+  .product-card {
+    position: relative;
+    /* background: #fff; */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    height: 350px;
+    width: 280px;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    width: 100%;
+    display: block;
+    height: 350px;
+  }
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-info h3 {
+    margin: 0 0 10px;
+  }
+
+  .product-info p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .cart-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: #0a0a0a;
+    color: #e9e6e6;
+    border: none;
+    border-radius: 5px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s, bottom 0.3s;
+  }
+
+  .product-card:hover .cart-btn {
+    opacity: 1;
+    bottom: 30px;
+  }
+  .footer-section {
+  background: #333;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: -50px;
+  height: 150px;
+}
+
+
+.site-footer a {
+  color: #fff;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.site-footer a:hover {
+  color: #ff6f61;
+}
+ </style>
+</head>
+<body>
+<header>
+    <header> 
+   <!-- Top Header --> 
+  <div class="top-header" id="a1">
+    <a href="#" class="logo">
+      <img src="./image/image2.png" alt="Company Logo">
+      MyCompany
+    </a>
+    <button class="signup-btn" onclick="window.location='/signup'">Sign Up</button>   
+  </div>
+
+  <!-- Navigation -->
+   <nav class="nav-header">
+    <a href="#a1">Home</a>
+    <a href="#a2">About</a>
+    <a href="#a3">Contact</a>
+  </nav>
+</header>
+ <div class="banner" >
+    <div class="banner-content">
+      <h1>"Style Upgrade Made Easy"</h1>   
+      <p>Grab Your Favorite Shirts & T-Shirts Today</p>
+    </div>
+    <div class="banner-images">
+      <img src="./image/image.jpg" alt="Image Top" class="img-top">
+      <img src="./image/images.jpg" alt="Image Middle" class="img-middle">
+      <img src="./image/images1.jpg" alt="Image Side" class="img-side">
+    </div>
+  </div>
+
+<div class="dashboard">
+
+    <div>
+        <img src="./image/message.png" class="click-image" alt="Click to show dashboard">
+        
+    </div>
+
+    
+    <div class="dashboard-container" id="dashboard">
+        <h1>Dashboard</h1>
+        <p id="display-username"></p>
+        <p id="display-password"></p>
+    </div>
+    </div>
+
+      <div class="cards-container">
+   
+    <div class="card">
+      <img class="img1" src="image/image2.jpg" alt="Card 1 Image 1">
+      <img class="img2" src="image/image3.jpg" alt="Card 1 Image 2">
+    </div>
+
+    <div class="card">
+      <img class="img1" src="image/image4.jpg" alt="Card 2 Image 1">
+      <img class="img2" src="image/image5.jpg" alt="Card 2 Image 2">
+    </div>
+
+   
+    <div class="card">
+      <img class="img1" src="image/image6.jpg" alt="Card 3 Image 1">
+      <img class="img2" src="image/image7.jpg" alt="Card 3 Image 2">
+    </div>
+  </div>
+
+   <div class="banner2" id="a2">
+        <div class="banner-left">
+            <img src="image/image8.png" alt="Model">
+        </div>
+       <div class="banner-right">
+    
+    <h1>Quality Fabrics, Timeless Style</h1>
+    <p>
+        We offer the finest textiles, carefully selected for durability, comfort, and elegance. Each design is crafted to provide timeless style for everyday wear, festive occasions, and special celebrations.
+        <br><br>
+        Our goal is to make looking your best accessible without overspending. With fair pricing and exceptional craftsmanship, we ensure every shopping experience is smooth, personalized, and satisfying.
+    </p>
+</div>
+
+    </div>
+
+
+    
+<div class="shop-page">
+<div class="product-grid">
+  <div class="product-card">
+    <img src="image/image9.jpg" alt="Product 1">
+    <div class="product-info">
+    </div>
+    <button class="cart-btn">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="image/image10.jpg" alt="Product 2">
+    <div class="product-info">
+    </div>
+    <button class="cart-btn">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="image/image11.jpg" alt="Product 3">
+    <div class="product-info">
+    </div>
+    <button class="cart-btn">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="image/image12.jpg" alt="Product 4">
+    <div class="product-info">
+    </div>
+    <button class="cart-btn">Add to Cart</button>
+  </div>
+</div>
+</div>
+
+<section class="footer-section" id="a3">
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Your Shop Name. All Rights Reserved.</p>
+      <p>
+        <a href="#" style="color:#fff; text-decoration:underline;">About Us</a> |
+        <a href="#" style="color:#fff; text-decoration:underline;">Contact</a> |
+        <a href="#" style="color:#fff; text-decoration:underline;">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+</section>
+
+    <script>
+        const dashboard = document.getElementById('dashboard');
+        const clickImage = document.querySelector('.click-image');
+
+        clickImage.addEventListener('click', () => {
+            
+            dashboard.style.display = 'block';
+
+           
+            const username = sessionStorage.getItem('username');
+            const password = sessionStorage.getItem('password');
+
+            if (username && password) {
+                document.getElementById('display-username').textContent = `Username: ${username}`;
+                document.getElementById('display-password').textContent = `Password: ${password}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
+  
+
+
+
+
+
